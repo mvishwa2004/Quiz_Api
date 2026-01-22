@@ -26,13 +26,13 @@ def generate_quiz(request):
     # unit = data.get('unit')
     num = data.get('num')
 
-    if not subject or not unit or not num:
+    if not num:
         return jsonify({'error': 'Missing required fields'}), 400
 
     try:
         # 3. ROBUSTNESS: Configure the model to force JSON output
         model = genai.GenerativeModel(
-            model_name="gemini-1.5-flash",
+            model_name="gemini-2.5-flash",
             generation_config={"response_mime_type": "application/json"}
         )
 
